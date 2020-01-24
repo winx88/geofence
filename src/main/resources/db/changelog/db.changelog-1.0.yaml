@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: sql-example
+      author: liquibase-docs
+      changes:
+        - sql:
+            comment: What about Bob?
+            dbms: h2, oracle
+            endDelimiter: \nGO
+            splitStatements: true
+            sql: CREATE SEQUENCE hibernate_sequence START 101;
+            stripComments: true
+  - changeSet:
+      id: 1
+      author: pzagorski
+      changes:
+        - createTable:
+            tableName: book
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
